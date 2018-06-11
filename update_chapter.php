@@ -3,7 +3,12 @@
 	$dbuser = "root";
 	$pass = "";
 	$dbname = "E_Police";
+	if(!isset($_COOKIE['LoginFlag'])){
+    header('Location:Login.php');
+	}
+	else{
 	session_start();
+
 	$conn = mysqli_connect($host,$dbuser,$pass,$dbname);
 	if($_GET['do']=='remove'){
 		$chap_id = $_GET['chap_id'];
@@ -31,4 +36,6 @@
 			header('Location:Dashboard_Chapter.php');
 		}
 	}
+}
+mysqli_close($conn);
 ?>

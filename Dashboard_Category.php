@@ -4,6 +4,9 @@
 	$dbuser = "root";
 	$pass = "";
 	$dbname = "E_Police";
+	if(!isset($_COOKIE['LoginFlag'])){
+    header('Location:Login.php');
+	}
 	$conn = mysqli_connect($host,$dbuser,$pass,$dbname);
 ?>
 
@@ -51,6 +54,10 @@ tr{
   		<ul class="navbar-nav">
     		<li class="nav-item active">
       		<a class="nav-link" href="#"><h5>E Police</h5> </a>
+
+    		</li>
+    		<li class="nav-item active" style="align-content: right;">
+      		<a class="nav-link" href="Logout.php">Logout</a>
     		</li>
   		</ul>
 	</nav>
@@ -89,7 +96,7 @@ tr{
 					$count++;
 					}
 				}
-	
+				mysqli_close($conn);
 			?>
 			
 		</table>

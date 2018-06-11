@@ -3,6 +3,10 @@
 	$dbuser = "root";
 	$pass = "";
 	$dbname = "E_Police";
+	if(!isset($_COOKIE['LoginFlag'])){
+    header('Location:Login.php');
+	}
+	else{
 	$conn = mysqli_connect($host,$dbuser,$pass,$dbname);
 	//echo $_GET['id'];
 	if($_GET['do']=='remove'){
@@ -30,4 +34,6 @@
 			header('Location:Dashboard_Video.php');
 		}
 	}
+}
+mysqli_close($conn);
 ?>
